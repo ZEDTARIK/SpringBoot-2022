@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.ws.ettarak.requests.UserRequest;
+import app.ws.ettarak.responses.UserResponse;
 
 @RestController
 @RequestMapping("/users") 
@@ -21,8 +22,8 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public String createUser(@RequestBody UserRequest userRequest) {
-		return "Create user was called !";
+	public UserResponse createUser(@RequestBody UserRequest userRequest) {
+		return null;
 	}
 	
 	@PutMapping

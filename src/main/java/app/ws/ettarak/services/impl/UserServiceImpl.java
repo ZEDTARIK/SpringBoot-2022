@@ -14,6 +14,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	app.ws.ettarak.shared.utils utils;
 
 	@Override
 	public UserDto createUser(UserDto user) {
@@ -29,7 +32,7 @@ public class UserServiceImpl implements UserService {
 		BeanUtils.copyProperties(user, userEntity);
 		
 		userEntity.setEncryptedPassword("Password Encrypted");
-		userEntity.setUserId("user Id");
+		userEntity.setUserId(utils.generatedUserId(15));
 
 		UserEntity newUser = userRepository.save(userEntity);
 		UserDto userDto = new UserDto();

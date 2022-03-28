@@ -16,20 +16,27 @@ public class UserServiceImpl implements UserService {
 	UserRepository userRepository;
 
 	@Override
-	public UserDto createUser(UserDto userDto) {
+	public UserDto createUser(UserDto user) {
 
+		
+		// check if email is already exist 
+		
+		UserEntity checkedEmail = userRepository.findByEmail(user.getEmail());
+		
+		if(checkedEmail != null ) throw new RuntimeException("User Email Already Exist !!");
+		
 		UserEntity userEntity = new UserEntity();
-		BeanUtils.copyProperties(userDto, userEntity);
+		BeanUtils.copyProperties(user, userEntity);
 		
 		userEntity.setEncryptedPassword("Password Encrypted");
 		userEntity.setUserId("user Id");
 
 		UserEntity newUser = userRepository.save(userEntity);
-		UserDto userDto1 = new UserDto();
+		UserDto userDto = new UserDto();
 
-		BeanUtils.copyProperties(newUser, userDto1);
+		BeanUtils.copyProperties(newUser, userDto);
 
-		return userDto1;
+		return userDto;
 	}
 
 }

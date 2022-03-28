@@ -3,9 +3,11 @@ package app.ws.ettarak.entities;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity(name = "users")
 public class UserEntity implements Serializable {
 
 	/**

@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 		
 		UserEntity checkedEmail = userRepository.findByEmail(user.getEmail());
 		
-		if(checkedEmail != null ) throw new RuntimeException("User Email Already Exist !!");
+		if(checkedEmail !=null ) throw new RuntimeException("User Email Already Exist !!");
 		
 		UserEntity userEntity = new UserEntity();
 		BeanUtils.copyProperties(user, userEntity);
